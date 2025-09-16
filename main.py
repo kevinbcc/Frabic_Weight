@@ -18,6 +18,11 @@ from src.preprocessing import Preprocessing
 from src.utils import save_predictions_by_source, calculate_rmse_by_source, print_avg_predicted_ratios
 from models.module import SimpleCNN_MLP
 
+
+# 設定字型來支援中文字符
+matplotlib.rcParams["font.sans-serif"] = ["Microsoft JhengHei"]  # 或者使用其他支援中文的字型
+matplotlib.rcParams["axes.unicode_minus"] = False  # 確保負號能正確顯示
+
 # ================================
 # 基本設定
 # ================================
@@ -73,7 +78,7 @@ def process_roi_for_uploaded_hdrs(progress, total_files):
             fig, ax = plt.subplots()
             img = ax.imshow(sam_map, cmap="jet")
             plt.colorbar(img)
-            ax.set_title(f"SAM Map - {filename}\n請框選 ROI ({fixed_width}x{fixed_height})\n(Ctrl+滾輪向上放大)")
+            ax.set_title(f"SAM Map - {filename}\n請框選 ROI ({fixed_width}x{fixed_height})\n(Ctrl+滾輪向下放大)")
 
             rect_coords = {}
 
